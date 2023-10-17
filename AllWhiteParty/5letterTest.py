@@ -8,7 +8,7 @@ def generate_combinations(length=5):
     return itertools.product(letters, repeat=length)
 
 def main():
-    ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+    ser = serial.Serial('/dev/ttyUSB0', 115200 , timeout=1)
 
     time.sleep(2)
 
@@ -18,7 +18,7 @@ def main():
 
         ser.write(data.encode('utf-8'))
 
-        time.sleep(0.1)
+        time.sleep(3)
 
         response = ser.readline().decode('utf-8').strip()
         if response:
