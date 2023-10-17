@@ -8,9 +8,24 @@ def generate_combinations(length=5):
     return itertools.product(letters, repeat=length)
 
 def main():
-    ser = serial.Serial('/dev/ttyUSB0', 115200 , timeout=1)
+    # LINUX:
+    # ser = serial.Serial('/dev/ttyUSB0', baudrate=115200 , timeout=1)
 
-    time.sleep(2)
+    # Windows
+    with serial.Serial() as ser:
+        ser.baudrate=115200 
+        ser.port='COM5'
+        ser.timeout=1
+    
+    ser.open()
+
+    ## get beginning lines
+    time.sleep(1)
+    response = ser.readline().decode('utf-8')
+    while response:
+        print(f"{response}")
+        response = ser.readline().decode('utf-8')
+
 
     for combo in generate_combinations():
         print("Current test: ", combo)
