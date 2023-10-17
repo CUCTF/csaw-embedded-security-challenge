@@ -5,13 +5,16 @@ import time
 
 def generate_combinations(length=5):
     letters = string.ascii_letters #+ string.digits
+    one = letters
+    two = letters[0]
+    three = letters[0]
     four = letters[7:8]
-    # AF_upper = ['A','B','C','D','E','F']
     five = ['A']
-    output = itertools.product(letters, letters, letters,four,five)
-    # output = itertools.combinations_with_replacement(AF_upper,5)
-
-    # output = itertools.product(letters, repeat=length)
+    # find highest voltage using signal pin and ground on haptic feedback
+        # then add a letter and repeat until username is found
+    output = itertools.product(one) 
+    # output = itertools.product(one, two, letters, four, five)
+    # output = itertools.product(letters, repeat=2)
     return output
 
 def main():
@@ -22,7 +25,7 @@ def main():
     # Windows
     with serial.Serial() as ser:
         ser.baudrate=115200 
-        ser.port='COM5'
+        ser.port='COM7'
         ser.timeout=1
     
     ser.open()
