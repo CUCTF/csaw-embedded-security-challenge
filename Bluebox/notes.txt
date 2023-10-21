@@ -1,0 +1,48 @@
+Serial output from board with Arduino:
+
+```
+Press 1st Key followed by #
+9
+9 #
+Press 2nd Key followed by #
+9
+9 #
+Press 3rd Key followed by #
+0
+0 #
+Press 4th Key followed by #
+3
+3 #
+Congrats on passing the first phase! Now plaing the flag...
+Press 1st Key followed by #
+B
+B #
+Press 2nd Key followed by #
+3
+3 #
+Press 3rd Key followed by #
+3
+3 #
+Press 4th Key followed by #
+9
+9 #
+Press 5th Key followed by #
+B
+B #
+Press 6th Key followed by #
+0
+0 #
+Press 7th Key followed by #
+0
+0 #
+Press 8th Key followed by #
+9
+9 #
+
+
+/********************  YOU BEAT THE CHALLENGE!!!   ********************/
+Congrats! Please add the flag to the report...
+Flag: B339B009
+/********************          Congrats!!!         ********************/
+
+```
