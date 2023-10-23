@@ -27,6 +27,12 @@ def generateB64(toB64):
 		b64digits.append ( b2a_base64(i).decode())
 	return b64digits
 
+def generateB32(toB32):
+	b32digits = []
+	for i in toB32:
+		b32digits.append(base64.b32encode(bytearray(i, 'ascii')).decode('utf-8'))
+	return b32digits
+
 def writeOut(data, filename):
 	f = open(filename, "w")
 	for x in data:	
@@ -35,13 +41,18 @@ def writeOut(data, filename):
 
 def main():
 	digits = get_data("csaw-embedded-security-challenge/czNxdTNuYzM/digits.txt")
+	print(f"Original: {digits}\n")
 	hexed = generate_hex(digits)
-	print(hexed)
+	print(f"Hex: {hexed}\n")
 
 	b64digits = generateB64(hexed)
-	print(f"B64: {b64digits}")
+	print(f"Hex to B64: {b64digits}\n")
 
-	writeOut(b64digits, "csaw-embedded-security-challenge/czNxdTNuYzM/base64_translated.txt")
+	b32digits = generateB32(b64digits)
+	print(f"B64 to B32: {b32digits}\n")
+
+
+	# writeOut(b64digits, "csaw-embedded-security-challenge/czNxdTNuYzM/base64_translated.txt")
 	
 
 if __name__ == '__main__':
