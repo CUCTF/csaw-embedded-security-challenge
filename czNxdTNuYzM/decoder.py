@@ -33,6 +33,12 @@ def generateB32(toB32):
 		b32digits.append(base64.b32encode(bytearray(i, 'ascii')).decode('utf-8'))
 	return b32digits
 
+def ascii_sum (str_list):
+	res = []
+	for sub in str_list:
+		res.append(sum(map(ord, sub)))
+	return (str (res))
+
 def writeOut(data, filename):
 	f = open(filename, "w")
 	for x in data:	
@@ -42,6 +48,7 @@ def writeOut(data, filename):
 def main():
 	digits = get_data("csaw-embedded-security-challenge/czNxdTNuYzM/digits.txt")
 	print(f"Original: {digits}\n")
+	
 	hexed = generate_hex(digits)
 	print(f"Hex: {hexed}\n")
 
@@ -51,6 +58,11 @@ def main():
 	b32digits = generateB32(b64digits)
 	print(f"B64 to B32: {b32digits}\n")
 
+	res = ascii_sum(b32digits)
+	print(f"Position Summation (B32): {res}\n")
+
+	res = ascii_sum(b64digits)
+	print(f"Position Summation (B64): {res}\n")
 
 	# writeOut(b64digits, "csaw-embedded-security-challenge/czNxdTNuYzM/base64_translated.txt")
 	
