@@ -13,24 +13,21 @@ def get_data(filename):
 def generate_hex(toHex):
 	hexed = []
 	for i in toHex:
-		temp = hex(int(i))
-		if (len(temp)%2 == 0):
-			temp = temp.replace("0x","")
-		else:
-			temp = temp.replace("0x","0")
-		hexed.append (bytes.fromhex(temp))
+		b_length = (int(i).bit_length()+ 7) // 8
+		bytes_val = int(i).to_bytes(b_length, 'big')
+		hexed.append (bytes_val)
 	return hexed
 	
 def generateB64(toB64):
 	b64digits = []
 	for i in toB64:
-		b64digits.append ( b2a_base64(i).decode())
+		b64digits.append ( b2a_base64(i).decode('utf-8'))
 	return b64digits
 
 def generateB32(toB32):
 	b32digits = []
 	for i in toB32:
-		b32digits.append(base64.b32encode(bytearray(i, 'ascii')).decode('utf-8'))
+		b32digits.append(base64.b32encode(bytearray(i, 'utf-8')).decode('utf-8'))
 	return b32digits
 
 def ascii_sum (str_list):
@@ -49,10 +46,16 @@ def main():
 	digits = get_data("csaw-embedded-security-challenge/czNxdTNuYzM/digits.txt")
 	print(f"Original: {digits}\n")
 	
-	hexed = generate_hex(digits)
+	my_bytes = generate_hex(digits)
+	print(f"Bytes: {my_bytes}\n")
+
+	hexed = []
+	for x in range (len(my_bytes)):
+		hexed.append(my_bytes[x].hex())
 	print(f"Hex: {hexed}\n")
 
-	b64digits = generateB64(hexed)
+
+	b64digits = generateB64(my_bytes)
 	print(f"Hex to B64: {b64digits}\n")
 
 	b32digits = generateB32(b64digits)
