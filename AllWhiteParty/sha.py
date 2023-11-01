@@ -1,7 +1,8 @@
 import sys
 import hashlib
 
-SHA_PREFIX = b'\xa7\x62\xd4\x90\x80'
+SHA_PREFIX = b'\x20\x75\x4a\x41\xce'
+
 SHAS = ['sha1', 'sha256', 'sha512']
 #last = 700000000
 #last_high = 9790630000
