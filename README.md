@@ -1,5 +1,3 @@
 # CSAW Embedded Security Challange
 
-Steps to flash firmware onto arduino:
-
-*TODO (emily)*
+CU Cyber submission for CSAW Embedded Security Challenge
