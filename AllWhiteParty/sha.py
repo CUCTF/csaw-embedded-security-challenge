@@ -1,11 +1,11 @@
 import sys
 import hashlib
 
+# First five bytes of suspected hash
 SHA_PREFIX = b'\x20\x75\x4a\x41\xce'
 
+# Current SHA algorithms tested
 SHAS = ['sha1', 'sha256', 'sha512']
-#last = 700000000
-#last_high = 9790630000
 
 def test_hash(h):
     return h.digest()[:5] == SHA_PREFIX
